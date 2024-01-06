@@ -1,0 +1,38 @@
+- src
+    - main
+        - java
+            - pages
+                - elements
+                    - Header.java                           // Елемент хедера в якому описані всі елементи хедера
+                - CommonActionsWithElements.java                // Все спільне для елементів
+                        - initElement()                         // Ініціалізація елементів
+                        - clickOnElement(WebElement element)
+                        - enterTextToElement(String text, WebElement element)
+                        - isElementDisplayed(WebElement element)
+                - ParentPage.java  extends CommonActionsWithElements.java   // Все спільне для Пейджів
+                        - checkCurrentUrl(String partUrl)
+                - HomePage.java extends ParentPage.java
+                - LoginPage.java extends ParentPage.java
+                - pages.PageProvider.java
+                    - loginPage()                     // метод який буде повертати обєкт сторінки LoginPage
+                    - homePage()                      // метод який буде повертати обєкт сторінки HomePage
+            - libs
+                - Utils.java
+        - resources
+            - application.properties
+            - log4j.properties
+    - test
+        - java
+            - BaseTest.java                             // Base class for all test classes
+                - before()                              // This method will be executed before each test method
+                    - intiDriver()
+                    - creating pages.PageProvider object      // він нам буде повертати обєкти сторінок які ми будемо використовувати в тестах
+                - after()                               // This method will be executed after each test method
+                    - quitDriver()
+
+            - LoginTest.java        extends BaseTest
+                - TC_01_LoginWithValidData() // Test method
+                - TC_02_LoginWithInvalidData() // Test method
+            - RegisterTest.java     extends BaseTest
+                - TC_01_RegisterWithValidData() // Test method
+                - TC_02_RegisterWithInvalidData() // Test method
