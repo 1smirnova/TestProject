@@ -4,6 +4,7 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import pages.CommonActionsWithElements;
+import pages.MyAccountPage;
 
 
 public class HeaderElement extends CommonActionsWithElements {
@@ -34,6 +35,11 @@ public class HeaderElement extends CommonActionsWithElements {
 
     public HeaderElement checkIsButtonMyOrdersNotVisible() {
         checkElementIsNotVisible(myOrdersBtn);
+        return this;
+    }
+
+    public HeaderElement clickOnMyPanelButton() {
+        clickOnElement(myProfileBtn);
         return this;
     }
 }

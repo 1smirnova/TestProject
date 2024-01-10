@@ -46,8 +46,7 @@ public class HomePage extends ParentPage {
 
     public HomePage checkIsRedirectToHomePage() {
         checkUrl();
-        Assert.assertTrue("Invalid page title - not Home Page"
-                , isElementDisplayed(buttonLogin));
+        getHeader().checkIsButtonMyPanelVisible();
         return this;
     }
 

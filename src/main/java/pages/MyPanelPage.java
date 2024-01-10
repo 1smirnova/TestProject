@@ -35,4 +35,8 @@ public class MyPanelPage extends ParentPage {
                 , isElementDisplayed(buttonSignIn));
         return this;
     }
+    public MyAccountPage clickOnMyAccountButton() {
+        clickOnElement(myAccountBtn);
+        return new MyAccountPage(webDriver);
+    }
 }

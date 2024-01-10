@@ -29,4 +29,30 @@ public class MyAccountPage extends ParentPage {
     public MyAccountPage(WebDriver webDriver) {
         super(webDriver);
     }
+
+    public MyAccountPage checkIsRedirectToMyAccountPage() {
+        checkUrl();
+        checkIsElementVisible(myAccountTitle);
+        return this;
+    }
+
+    public MyAccountPage addTextToInputFirstName(String changedName) {
+        enterTextIntoInput(inputName, changedName);
+        return this;
+    }
+
+    public MyAccountPage addTextToInputLastName(String changedLastName) {
+        enterTextIntoInput(inputName, changedLastName);
+        return this;
+    }
+
+    public MyAccountPage selectDayOfBirth(String number) {
+        enterTextIntoInput(inputDayOfBirth, number);
+        return this;
+    }
+
+    public MyAccountPage selectDiscount(String value) {
+        selectValueInDropDown(selectDiscount, value);
+        return this;
+    }
 }

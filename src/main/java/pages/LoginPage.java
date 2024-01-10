@@ -32,14 +32,14 @@ public class LoginPage extends ParentPage {
         return this;
     }
 
-    public MyPanelPage fillLoginFormAndSubmit(String email, String password) {
+    public HomePage fillLoginFormAndSubmit(String email, String password) {
         checkIsElementVisible(inputEmail);
         enterTextIntoInput(inputEmail, email);
         checkIsElementVisible(inputPassword);
         enterTextIntoInput(inputPassword, password);
         checkIsElementVisible(buttonSignIn);
         clickOnElement(buttonSignIn);
-        return new MyPanelPage(webDriver);
+        return new HomePage(webDriver);
     }
 
     public LoginPage checkIsInputPasswordNotPresent() {

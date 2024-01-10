@@ -15,4 +15,8 @@ public class PageProvider {
     public HomePage getHomePage() {
         return new HomePage(webDriver);
     }
+
+    public MyPanelPage getMyPanelPage() {
+        return new MyPanelPage(webDriver);
+    }
 }
