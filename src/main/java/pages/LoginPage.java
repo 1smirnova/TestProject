@@ -25,7 +25,6 @@ public class LoginPage extends ParentPage {
     @FindBy(xpath = "//*[@id='new_user']/div[1]/div[2]")
     private WebElement invalidLoginAlert;
 
-    private String invalidLoginAlertText = "Niepoprawny email lub hasło.";
     public LoginPage checkIsRedirectToLoginPage() {
         checkUrl();
         Assert.assertTrue("Invalid page title - not Login Page"
@@ -50,6 +49,27 @@ public class LoginPage extends ParentPage {
 
     public LoginPage checkIsInputUsernameNotPresent() {
         checkElementIsNotVisible(inputEmail);
+        return this;
+    }
+
+    public LoginPage checkIsButtonSignInPresent() {
+        checkIsElementVisible(buttonSignIn);
+        return this;
+    }
+
+    public LoginPage checkIsInputUsernamePresent() {
+        checkIsElementVisible(inputEmail);
+        return this;
+    }
+
+    public LoginPage checkIsInputPasswordPresent() {
+        checkIsElementVisible(inputPassword);
+        return this;
+    }
+
+    public LoginPage checkAlertWithTextIsPresent(String alertText) {
+        checkIsElementVisible(invalidLoginAlert);
+        checkTextInElement(invalidLoginAlert, alertText);
         return this;
     }
 }

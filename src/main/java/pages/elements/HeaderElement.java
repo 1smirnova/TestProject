@@ -26,4 +26,14 @@ public class HeaderElement extends CommonActionsWithElements {
         checkIsElementVisible(myOrdersBtn);
         return this;
     }
+
+    public HeaderElement checkIsButtonMyPanelNotVisible() {
+        checkElementIsNotVisible(myProfileBtn);
+        return this;
+    }
+
+    public HeaderElement checkIsButtonMyOrdersNotVisible() {
+        checkElementIsNotVisible(myOrdersBtn);
+        return this;
+    }
 }
