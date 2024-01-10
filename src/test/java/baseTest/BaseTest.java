@@ -25,7 +25,8 @@ public class BaseTest {
         WebDriverManager.chromedriver().setup();//встановлюємо драйвер
         webDriver = new ChromeDriver();//створюємо екземпляр драйвера
         webDriver.manage().window().maximize();//розгортаємо вікно на весь екран
-        webDriver.manage().timeouts().implicitlyWait(Duration.ofSeconds(5));//задаємо неявне очікування
+        webDriver.manage().timeouts().implicitlyWait(Duration.ofSeconds(50));
+     //   webDriver.manage().timeouts().setScriptTimeout(Duration.ofSeconds(50));
         logger.info("Browser was opened");//логуємо, що браузер відкрито
         pageProvider = new PageProvider(webDriver);
     }

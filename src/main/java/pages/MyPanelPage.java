@@ -1,5 +1,6 @@
 package pages;
 
+import org.junit.Assert;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
@@ -15,8 +16,23 @@ public class MyPanelPage extends ParentPage {
     private WebElement userDiscount;
     @FindBy(xpath = "//*[@href='/my/account']")
     private WebElement myAccountBtn;
+    @FindBy(xpath = "//*[@id='signin']")
+    private WebElement buttonSignIn;
+
+    @Override
+    protected String getRelativeUrl() {
+        return "/my";
+    }
 
     public MyPanelPage(WebDriver webDriver) {
         super(webDriver);
+    }
+
+    //check the redirect to the MyPanelPage
+    public MyPanelPage checkIsRedirectToMyPanelPage() {
+        checkUrl();
+        Assert.assertTrue("Invalid page title - not My Panel Page"
+                , isElementDisplayed(buttonSignIn));
+        return this;
     }
 }

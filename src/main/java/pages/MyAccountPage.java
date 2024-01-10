@@ -21,6 +21,11 @@ public class MyAccountPage extends ParentPage {
     private WebElement buttonSaveChanges;
 
 
+    @Override
+    protected String getRelativeUrl() {
+        return "/my/account";
+    }
+
     public MyAccountPage(WebDriver webDriver) {
         super(webDriver);
     }

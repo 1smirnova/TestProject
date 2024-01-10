@@ -6,6 +6,11 @@ import org.openqa.selenium.support.FindBy;
 
 public class SignUpPage extends ParentPage {
 
+    @Override
+    protected String getRelativeUrl() {
+        return "/signup";
+    }
+
     public SignUpPage(WebDriver webDriver) {
         super(webDriver);
     }

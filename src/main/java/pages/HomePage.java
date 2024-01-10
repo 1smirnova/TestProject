@@ -4,8 +4,14 @@ import org.junit.Assert;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
+import pages.elements.HeaderElement;
 
 public class HomePage extends ParentPage {
+    @Override
+    protected String getRelativeUrl() {
+        return "/";
+    }
+
     public HomePage(WebDriver webDriver) {
         super(webDriver);
     }
@@ -27,7 +33,7 @@ public class HomePage extends ParentPage {
     @FindBy(xpath = "//*[@class='row station']")
     private WebElement resultStation;
 
-    public void openHomePage() {
+    public HomePage openHomePage() {
         try {
             webDriver.get("https://koleo.pl/");
             logger.info("Home page was opened");
@@ -35,5 +41,22 @@ public class HomePage extends ParentPage {
             logger.error("Can not open Home Page");
             Assert.fail("Can not open Home Page");
         }
+        return this;
+    }
+
+    public HomePage checkIsRedirectToHomePage() {
+        checkUrl();
+        Assert.assertTrue("Invalid page title - not Home Page"
+                , isElementDisplayed(buttonLogin));
+        return this;
+    }
+
+    public LoginPage clickOnButtonSignIn() {
+        clickOnElement(buttonLogin);
+        return new LoginPage(webDriver);
+    }
+
+    public HeaderElement getHeader() {
+        return new HeaderElement(webDriver);
     }
 }
