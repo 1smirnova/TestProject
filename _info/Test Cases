@@ -1,0 +1,126 @@
+Test Case 1: Valid Login
+Steps:
+
+1. Navigate to the home page.
+2. Verify redirection to the home page is successful.
+3. Click on the "Sign In" button.
+4. Verify redirection to the login page.
+5. Enter valid login credentials (email and password).
+6. Submit the login form.
+Expected Results:
+
+-Successfully redirected to the home page.
+-"My Panel" and "My Orders" buttons are visible in the header.
+-Username and password input fields are not present on the login page.
+
+---
+
+Test Case 2: Invalid Login
+Steps:
+
+1. Navigate to the home page.
+2. Verify redirection to the home page is successful.
+3. Click on the "Sign In" button.
+4. Enter an invalid login email and a valid password.
+5. Submit the login form.
+
+Expected Results:
+
+-Button to sign in is present on the login page.
+-Username and password input fields are present on the login page.
+-An alert with the text "Niepoprawny email lub hasło." (Incorrect email or password) is displayed.
+-"My Panel" and "My Orders" buttons are not visible in the header.
+
+---
+
+Test Case 3: Change Profile Name
+   Steps:
+1. Navigate to the home page.
+2. Click on the "Sign In" button.
+3. Verify redirection to the login page.
+4. Enter valid login credentials (email and password).
+5. Submit the login form.
+6. Click on the "My Panel" button in the header.
+7. Click on the "My Account" button.
+8. Verify redirection to the "My Account" page.
+9. Enter a new first name in the appropriate input field.
+10.Save the changes.
+11.Verify redirection to the home page.
+12.Verify the updated first name in the "My Orders" button in the header.
+
+   Expected Results:
+
+ - Successfully redirected to the login page.
+ - Successfully logged in with valid credentials.
+ - "My Panel" button in the header is visible.
+ - Successfully redirected to the "My Account" page.
+ - Able to enter a new first name.
+ - Changes are saved successfully.
+ - Successfully redirected to the home page.
+ - "My Orders" button in the header displays the updated first name.
+
+ ---
+
+Test Case 4: Search Test
+
+1. Navigate to the home page.
+2. Click on the "Sign In" button.
+3. Verify redirection to the login page.
+4. Enter valid login credentials (email and password).
+5. Submit the login form.
+6. Enter the "From" and "To" locations.
+7. Enter the date for the search.
+8. Click on the "Search" button.
+
+Expected Results:
+- Successfully redirected to the home page.
+- "From" and "To" locations entered.
+- Date for the search entered.
+- Successfully redirected to the search result page.
+- The title of the search result page contains the "From" and "To" locations.
+
+---
+
+Test Case 5: Invalid Date Test
+
+1. Navigate to the home page.
+2. Click on the "Sign In" button.
+3. Verify redirection to the login page.
+4. Enter valid login credentials (email and password).
+5. Submit the login form.
+6. Enter the "From" and "To" locations.
+7. Enter an invalid future date for the search.
+8. Click on the "Search" button.
+
+Expected Results:
+- Successfully redirected to the home page.
+- "From" and "To" locations entered.
+- Invalid future date entered for the search.
+- Alert with the specified message is present on the search result page.
+
+---
+
+ Test Case 6: Promo Displayed After Ticket Confirmation
+
+1. Navigate to the home page.
+2. Click on the "Sign In" button.
+3. Verify redirection to the login page.
+4. Enter valid login credentials (email and password).
+5. Submit the login form.
+6. Enter the "From" and "To" locations.
+7. Enter the date for the search.
+8. Click on the "Search" button.
+9. Click on the "Buy Ticket" button.
+10. Confirm passenger information.
+11. Confirm the order on the travel options page.
+12. Confirm the order again on the travel options page.
+
+Expected Results:
+- Successfully redirected to the home page.
+- "From" and "To" locations entered.
+- Date for the search entered.
+- Successfully redirected to the search result page.
+- Promo title "Dźwigniemy to za Ciebie!" is displayed on the travel options page after confirming the order.
+
+
+
