@@ -19,4 +19,12 @@ public class PageProvider {
     public MyPanelPage getMyPanelPage() {
         return new MyPanelPage(webDriver);
     }
+
+    public MyAccountPage getMyAccountPage() {
+        return new MyAccountPage(webDriver);
+    }
+
+    public SearchResultPage getSearchResultPage() {
+        return new SearchResultPage(webDriver);
+    }
 }

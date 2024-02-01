@@ -27,6 +27,7 @@ public class CommonActionsWithElements {
 
     protected void enterTextIntoInput(WebElement input, String text) {
         try {
+            webDriverWait5.until(ExpectedConditions.visibilityOf(input));
             input.clear();
             input.sendKeys(text);
             logger.info(text + " was inputted into input" + getElementName(input));
@@ -50,8 +51,8 @@ public class CommonActionsWithElements {
 
     protected void clickOnElement(WebElement element) {
         try {
-            webDriverWait15.until(ExpectedConditions.elementToBeClickable(element));
             String elementName = getElementName(element);
+            webDriverWait15.until(ExpectedConditions.elementToBeClickable(element));
             element.click();
             logger.info("Element was clicked " + elementName);
         } catch (Exception e) {
@@ -71,6 +72,7 @@ public class CommonActionsWithElements {
     }
 
     protected void checkIsElementVisible(WebElement webElement) {
+        webDriverWait5.until(ExpectedConditions.visibilityOf(webElement));
         Assert.assertTrue("Element is not visible", isElementDisplayed(webElement));
     }
 
@@ -93,6 +95,15 @@ public class CommonActionsWithElements {
             Select select = new Select(dropDown);
             select.selectByValue(value);
             logger.info(value + " was selected in dropdown" + getElementName(dropDown));
+        } catch (Exception e) {
+            printErrorAndStopTest(e);
+        }
+    }
+    protected void selectTextInDropDown(WebElement dropDown, String text) {
+        try {
+            Select select = new Select(dropDown);
+            select.selectByVisibleText(text);
+            logger.info(text + " was selected in dropdown" + getElementName(dropDown));
         } catch (Exception e) {
             printErrorAndStopTest(e);
         }

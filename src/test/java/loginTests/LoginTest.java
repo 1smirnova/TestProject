@@ -10,10 +10,10 @@ public class LoginTest extends BaseTest {
     private static final String INVALID_LOGIN_UI = "anastasiia.smirnova.qainvalid@gmail.com";
 
     @Test
-    public void validLogin() throws InterruptedException {
+    public void validLogin(){
         pageProvider.getHomePage()
                 .openHomePage()
-                //.checkIsRedirectToHomePage()
+                .checkIsRedirectToHomePage()
                 .clickOnButtonSignIn()
                 .checkIsRedirectToLoginPage()
                 .fillLoginFormAndSubmit(VALID_LOGIN_UI, VALID_PASSWORD_UI);
@@ -30,7 +30,7 @@ public class LoginTest extends BaseTest {
     public void invalidLogin() {
         pageProvider.getHomePage()
                 .openHomePage()
-               // .checkIsRedirectToHomePage() TODO: fix the method
+                .checkIsRedirectToHomePage()
                 .clickOnButtonSignIn()
                 .fillLoginFormAndSubmit(INVALID_LOGIN_UI, VALID_PASSWORD_UI);
         pageProvider.getLoginPage()

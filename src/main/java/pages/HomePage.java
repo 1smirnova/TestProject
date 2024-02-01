@@ -4,7 +4,13 @@ import org.junit.Assert;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
+import org.openqa.selenium.support.ui.ExpectedConditions;
 import pages.elements.HeaderElement;
+
+import java.time.Duration;
+
+import static org.openqa.selenium.Keys.DOWN;
+import static org.openqa.selenium.Keys.RETURN;
 
 public class HomePage extends ParentPage {
     @Override
@@ -46,7 +52,8 @@ public class HomePage extends ParentPage {
 
     public HomePage checkIsRedirectToHomePage() {
         checkUrl();
-        getHeader().checkIsButtonMyPanelVisible();
+        Assert.assertTrue("Invalid page title - not Home Page"
+                , isElementDisplayed(buttonLogin));
         return this;
     }
 
@@ -57,5 +64,37 @@ public class HomePage extends ParentPage {
 
     public HeaderElement getHeader() {
         return new HeaderElement(webDriver);
+    }
+
+    public HomePage enterFrom(String from) {
+        enterTextIntoInput(inputFrom, from);
+//        inputFrom.sendKeys(DOWN);
+//        inputFrom.sendKeys(RETURN);
+        return this;
+    }
+
+    public HomePage enterTo(String to) {
+        enterTextIntoInput(inputTo, to);
+        inputTo.sendKeys(RETURN);
+        return this;
+    }
+
+    public HomePage enterDate(String date) {
+        enterTextIntoInput(inputDate, date);
+        inputDate.sendKeys(RETURN);
+        return this;
+    }
+
+    public HomePage clickOnButtonSearch() {
+        webDriverWait5.until(ExpectedConditions.elementToBeClickable(buttonSearch));
+        clickOnElement(buttonSearch);
+        return this;
+    }
+
+    public HomePage checkIsRedirectToSearchPage() {
+        checkUrl();
+        Assert.assertTrue("Invalid page title - not Search Page"
+                , isElementDisplayed(resultFastest));
+        return this;
     }
 }
