@@ -1,0 +1,49 @@
+- src
+    - main
+        - java
+            - pages
+                - elements
+                    - HeaderElement.java
+                - CommonActionsWithElements.java                // Все спільне для елементів
+                        - initElement()                         // Ініціалізація елементів
+                        - clickOnElement(WebElement element)
+                        - enterTextToElement(String text, WebElement element)
+                        - isElementDisplayed(WebElement element)
+                        - checkTextInElement(String text, WebElement element)
+                        - getElementName(WebElement element)
+                - ConfirmPage.java
+                - HomePage.java
+                - LoginPage.java
+                - MyAccountPage.java
+                - PageProvider.java                             // Він нам буде повертати обєкти сторінок які ми будемо використовувати в тестах
+                - MyPanelPage.java
+                - SearchResultPage.java
+                - TravelOptionsPage.java
+                - ParentPage.java                               // Все спільне для сторінок
+                        - checkCurrentUrl(String partUrl)
+                        - getRelativeUrl()
+            - libs
+                - Util.java
+                - RandomLettersGenerator.java
+                - TestData.java
+        - resources
+            - log4j.properties
+    - test
+        - java
+
+            - BaseTest.java                             // Base class for all test classes
+                - before()                              // This method will be executed before each test method
+                    - intiDriver()
+                    - creating pages.PageProvider object      // він нам буде повертати обєкти сторінок які ми будемо використовувати в тестах
+                - after()                               // This method will be executed after each test method
+                    - quitDriver()
+
+            - LoginTest.java        extends BaseTest
+                - validLogin() // Test method
+                - invalidLogin() // Test method
+            - EditMyProfileTest.java     extends BaseTest
+                - changeProfileName() // Test method
+            - SearchTest.java      extends BaseTest
+                - searchTest() // Test method
+                -promoIsDisplayedAfterTicketConfirmation() // Test method
+                
