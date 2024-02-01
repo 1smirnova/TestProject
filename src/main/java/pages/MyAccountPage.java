@@ -8,7 +8,7 @@ import org.openqa.selenium.support.FindBy;
 public class MyAccountPage extends ParentPage {
     @FindBy(xpath = "//*[@class='section-heading__title']")
     private WebElement myAccountTitle;
-    @FindBy(xpath = "//*[@id=\"__layout\"]/div/div[1]/div/div[2]/div[1]/div/form/div[2]/label/div/input")
+    @FindBy(xpath = "//*[@type='text'][1]")
     private WebElement inputName;
     @FindBy(xpath = "//*[@placeholder='Dzień']")
     private WebElement inputDayOfBirth;
@@ -20,6 +20,8 @@ public class MyAccountPage extends ParentPage {
     private WebElement inputYearOfBirth;
     @FindBy(xpath = "//button[@type='submit']")
     private WebElement buttonSaveChanges;
+    @FindBy(xpath = "//p[contains(text(),'To pole nie może być puste.')]")
+    private WebElement validationMessage;
 
 
     @Override
@@ -32,6 +34,9 @@ public class MyAccountPage extends ParentPage {
     }
 
     public MyAccountPage checkIsRedirectToMyAccountPage() {
+        webDriverWait15.until(
+                webDriver -> webDriver.getCurrentUrl().matches(baseUrl + getRelativeUrl())
+        );
         checkUrl();
         checkIsElementVisible(myAccountTitle);
         return this;
@@ -42,30 +47,9 @@ public class MyAccountPage extends ParentPage {
         return this;
     }
 
-    public MyAccountPage addTextToInputLastName(String changedLastName) {
-        enterTextIntoInput(inputName, changedLastName);
-        return this;
-    }
-
-    public MyAccountPage selectDayOfBirth(String number) {
-        enterTextIntoInput(inputDayOfBirth, number);
-        return this;
-    }
-
-    public MyAccountPage selectDiscount(String value) throws InterruptedException {
-        clickOnElement(selectDiscount);
-        enterTextIntoInput(selectDiscount, value);
-        return this;
-    }
-
     public MyAccountPage saveChanges() {
         Actions actions = new Actions(webDriver);
         actions.moveToElement(buttonSaveChanges).click().build().perform();
-        return this;
-    }
-
-    public MyAccountPage refreshPage() {
-        webDriver.navigate().refresh();
         return this;
     }
 }

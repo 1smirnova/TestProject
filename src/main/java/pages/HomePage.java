@@ -1,14 +1,17 @@
 package pages;
 
 import org.junit.Assert;
+import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import pages.elements.HeaderElement;
 
 import java.time.Duration;
 
+import static org.openqa.selenium.By.xpath;
 import static org.openqa.selenium.Keys.DOWN;
 import static org.openqa.selenium.Keys.RETURN;
 
@@ -34,10 +37,7 @@ public class HomePage extends ParentPage {
     private WebElement inputDate;
     @FindBy(xpath = "//*[@id='small_search']")
     private WebElement buttonSearch;
-    @FindBy(xpath = "//*[@class='   fastest ']")
-    private WebElement resultFastest;
-    @FindBy(xpath = "//*[@class='row station']")
-    private WebElement resultStation;
+
 
     public HomePage openHomePage() {
         try {
@@ -68,33 +68,23 @@ public class HomePage extends ParentPage {
 
     public HomePage enterFrom(String from) {
         enterTextIntoInput(inputFrom, from);
-//        inputFrom.sendKeys(DOWN);
-//        inputFrom.sendKeys(RETURN);
         return this;
     }
 
     public HomePage enterTo(String to) {
         enterTextIntoInput(inputTo, to);
-        inputTo.sendKeys(RETURN);
         return this;
     }
 
     public HomePage enterDate(String date) {
         enterTextIntoInput(inputDate, date);
-        inputDate.sendKeys(RETURN);
         return this;
     }
 
     public HomePage clickOnButtonSearch() {
-        webDriverWait5.until(ExpectedConditions.elementToBeClickable(buttonSearch));
+        Actions actions = new Actions(webDriver);
+        actions.moveToElement(buttonSearch).click().perform();
         clickOnElement(buttonSearch);
-        return this;
-    }
-
-    public HomePage checkIsRedirectToSearchPage() {
-        checkUrl();
-        Assert.assertTrue("Invalid page title - not Search Page"
-                , isElementDisplayed(resultFastest));
         return this;
     }
 }

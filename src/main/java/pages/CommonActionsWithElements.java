@@ -15,7 +15,7 @@ import java.time.Duration;
 public class CommonActionsWithElements {
     protected WebDriver webDriver;
     protected Logger logger = Logger.getLogger(getClass());
-    protected WebDriverWait webDriverWait5, webDriverWait15;
+    protected WebDriverWait webDriverWait5, webDriverWait15, webDriverWait30;
 
 
     public CommonActionsWithElements(WebDriver webDriver) {
@@ -23,6 +23,7 @@ public class CommonActionsWithElements {
         PageFactory.initElements(webDriver, this);
         webDriverWait5 = new WebDriverWait(webDriver, Duration.ofSeconds(5));
         webDriverWait15 = new WebDriverWait(webDriver, Duration.ofSeconds(15));
+        webDriverWait30 = new WebDriverWait(webDriver, Duration.ofSeconds(30));
     }
 
     protected void enterTextIntoInput(WebElement input, String text) {
@@ -89,24 +90,4 @@ public class CommonActionsWithElements {
             printErrorAndStopTest(e);
         }
     }
-
-    protected void selectValueInDropDown(WebElement dropDown, String value) {
-        try {
-            Select select = new Select(dropDown);
-            select.selectByValue(value);
-            logger.info(value + " was selected in dropdown" + getElementName(dropDown));
-        } catch (Exception e) {
-            printErrorAndStopTest(e);
-        }
-    }
-    protected void selectTextInDropDown(WebElement dropDown, String text) {
-        try {
-            Select select = new Select(dropDown);
-            select.selectByVisibleText(text);
-            logger.info(text + " was selected in dropdown" + getElementName(dropDown));
-        } catch (Exception e) {
-            printErrorAndStopTest(e);
-        }
-    }
-
 }

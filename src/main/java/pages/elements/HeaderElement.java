@@ -1,5 +1,6 @@
 package pages.elements;
 
+import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
@@ -9,7 +10,7 @@ import pages.MyAccountPage;
 
 
 public class HeaderElement extends CommonActionsWithElements {
-    @FindBy(xpath = "//*[@href='/my/orders/']")
+    @FindBy(xpath = "//*[@href='/my/orders']")
     private WebElement myOrdersBtn;
     @FindBy(xpath = "//*[@href='/my']")
     private WebElement myProfileBtn;
@@ -29,7 +30,7 @@ public class HeaderElement extends CommonActionsWithElements {
         return this;
     }
     public HeaderElement checkTextInMyOrdersBtn(String text) {
-        webDriverWait15.until(ExpectedConditions.visibilityOf(myOrdersBtn));
+        webDriverWait30.until(ExpectedConditions.textToBePresentInElement(myOrdersBtn, text));
         checkTextInElement(myOrdersBtn, text);
         return this;
     }
@@ -44,12 +45,8 @@ public class HeaderElement extends CommonActionsWithElements {
     }
 
     public HeaderElement clickOnMyPanelButton() {
+        webDriverWait15.until(ExpectedConditions.elementToBeClickable(myProfileBtn));
         clickOnElement(myProfileBtn);
-        return this;
-    }
-
-    public HeaderElement clickOnMyOrdersButton() {
-        clickOnElement(myOrdersBtn);
         return this;
     }
 }

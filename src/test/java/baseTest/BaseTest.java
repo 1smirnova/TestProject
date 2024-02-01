@@ -17,7 +17,6 @@ public class BaseTest {
     WebDriver webDriver;
     Logger logger = Logger.getLogger(getClass());
     protected PageProvider pageProvider;
-    ParentPage parentPage;
 
     //Буде виконуватися перед кожним тестом
     @Before
@@ -26,7 +25,6 @@ public class BaseTest {
         webDriver = new ChromeDriver();//створюємо екземпляр драйвера
         webDriver.manage().window().maximize();//розгортаємо вікно на весь екран
         webDriver.manage().timeouts().implicitlyWait(Duration.ofSeconds(5));
-     //   webDriver.manage().timeouts().setScriptTimeout(Duration.ofSeconds(50));
         logger.info("Browser was opened");//логуємо, що браузер відкрито
         pageProvider = new PageProvider(webDriver);
     }

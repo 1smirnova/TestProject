@@ -4,6 +4,7 @@ import org.openqa.selenium.WebDriver;
 
 public class PageProvider {
     private WebDriver webDriver;
+
     public PageProvider(WebDriver webDriver) {
         this.webDriver = webDriver;
     }
@@ -27,4 +28,9 @@ public class PageProvider {
     public SearchResultPage getSearchResultPage() {
         return new SearchResultPage(webDriver);
     }
+
+    public TravelOptionsPage getTravelOptionsPage() {
+        return new TravelOptionsPage(webDriver);
+    }
+
 }

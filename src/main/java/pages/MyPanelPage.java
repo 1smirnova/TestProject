@@ -28,13 +28,6 @@ public class MyPanelPage extends ParentPage {
         super(webDriver);
     }
 
-    //check the redirect to the MyPanelPage
-    public MyPanelPage checkIsRedirectToMyPanelPage() {
-        checkUrl();
-        Assert.assertTrue("Invalid page title - not My Panel Page"
-                , isElementDisplayed(buttonSignIn));
-        return this;
-    }
     public MyAccountPage clickOnMyAccountButton() {
         clickOnElement(myAccountBtn);
         return new MyAccountPage(webDriver);
